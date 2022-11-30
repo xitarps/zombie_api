@@ -45,6 +45,9 @@ group :development, :test do
 
   # Tests coverage - https://github.com/simplecov-ruby/simplecov
   gem 'simplecov', "~> 0.21.2"
+
+  # Linter - https://github.com/rubocop/rubocop-rails
+  gem 'rubocop-rails', '~> 2.16.0'
 end
 
 group :development do

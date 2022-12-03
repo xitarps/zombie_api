@@ -3,7 +3,7 @@
 require 'spec_helper'
 
 RSpec.describe 'Create Survivor' do
-  context 'when request POST /survivor' do
+  context 'when request POST /api/v1/survivors' do
     context 'succeed' do
       it 'should return the survivor' do
         post '/api/v1/survivors', params: { survivor: { name: 'tester', gender: 'male' } }

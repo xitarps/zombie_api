@@ -1,5 +1,7 @@
 pt-BR:
   activerecord:
+    exceptions:
+      not_found: "Não foi possivel localizar pelo id: %{id}"
     errors:
       messages:
         record_invalid: 'A validação falhou: %{errors}'

@@ -10,6 +10,13 @@ class Api::V1::SurvivorsController < Api::V1::ApiController
     render json: @survivor.errors.as_json, status: :unprocessable_entity
   end
 
+  def show
+    @survivor = Survivor.find(params[:id])
+    render json: @survivor.as_json, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: [I18n.t('activerecord.exceptions.not_found', id: params[:id])], status: :not_found
+  end
+
   private
 
   def survivor_params

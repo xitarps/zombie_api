@@ -197,6 +197,8 @@ Style/RedundantEach: # new in 1.38
   Enabled: true
 Style/RedundantStringEscape: # new in 1.37
   Enabled: true
+Style/ClassAndModuleChildren:
+  Enabled: false
 Rails/ActionControllerFlashBeforeRender: # new in 2.16
   Enabled: true
 Rails/ActionControllerTestCase: # new in 2.14

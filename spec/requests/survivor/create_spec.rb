@@ -23,4 +23,12 @@ RSpec.describe 'Create Survivor' do
       end
     end
   end
+  context 'when persisted' do
+    it 'should have an auto generated token' do
+      post '/api/v1/survivors', params: { survivor: { name: 'tester', gender: 'male' } }
+
+      expect(json_parse['token']).not_to be_empty
+      expect(json_parse['token'].length).to eq(6)
+    end
+  end
 end

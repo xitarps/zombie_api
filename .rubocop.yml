@@ -254,7 +254,7 @@ Rails/Pluck: # new in 2.7
 Rails/PluckInWhere: # new in 2.7
   Enabled: true
 Rails/RedundantPresenceValidationOnBelongsTo: # new in 2.13
-  Enabled: true
+  Enabled: false
 Rails/RedundantTravelBack: # new in 2.12
   Enabled: true
 Rails/RenderInline: # new in 2.7

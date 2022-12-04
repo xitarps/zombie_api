@@ -132,6 +132,8 @@ pt-BR:
       present: deve ficar em branco
       required: é obrigatório(a)
       taken: já está em uso
+      infection_duplicated: 'denuncia de infecção já registrada'
+      wrong_infection_data: 'dados de infecção incorretos'
       too_long:
         one: 'é muito longo (máximo: 1 caracter)'
         other: 'é muito longo (máximo: %{count} caracteres)'

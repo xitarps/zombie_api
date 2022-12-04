@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :survivors, only: %i[create show update]
+      resources :infections, only: %i[create]
     end
   end
 end

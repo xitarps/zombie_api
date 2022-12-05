@@ -34,4 +34,21 @@ RSpec.describe Survivor, type: :model do
       expect(informer.survivors).not_to include(second_survivor)
     end
   end
+
+  context '#filtered_survivor' do
+    it 'should return survivors without unnecessary data' do
+      survivor = Survivor.create(name: 'survivor', gender: 'female')
+      Position.create(survivor: survivor, latitude: 2.7, longitude: -3.5)
+      expected_data = {
+        gender: 'female',
+        id: survivor.id,
+        infected: false,
+        latitude: 2.7,
+        longitude: -3.5,
+        name: 'survivor'
+      }.as_json
+
+      expect(survivor.filtered_survivor).to eq(expected_data)
+    end
+  end
 end

@@ -13,7 +13,7 @@ class Api::V1::InfectionsController < Api::V1::ApiController
 
     infection = Infection.new(informer: informer, survivor: survivor)
 
-    return render json: survivor.reload, status: :ok if infection.save
+    return render json: survivor.reload.filtered_survivor, status: :ok if infection.save
 
     render json: infection.errors.as_json, status: :unprocessable_entity
   end

@@ -39,7 +39,10 @@ Layout/LineLength:
   Max: 120
   Enabled: true
 
-# Auto generated
+Metrics/ClassLength:
+  Enabled: true
+  Exclude:
+   - 'app/services/location_service.rb'
 
 Style/AsciiComments:
   Enabled: false

@@ -28,24 +28,25 @@ class LocationService
       break if positions.any?
     end
 
-    positions = positions.map{ |position| { position: position,
-                                            latitude_value: (requester_latitude.abs-position.latitude.abs).abs.round,
-                                            longitude_value: (requester_longitude.abs-position.longitude.abs).abs.round } }
+    positions = build_raw_positions_with_values(positions)
 
-    positions = positions.sort do |a,b|
-      first_values = [a[:longitude_value].round,a[:latitude_value].round].sort
-      if [0,1].include? first_values.first
-        first_value = first_values.last - 0.1
-      else
-        first_value = first_values.last.lcm first_values.first
-      end
+    positions = sort_raw_positions(positions)
 
-      second_values = [b[:longitude_value].round,b[:latitude_value].round].sort
-      if [0,1].include? second_values.first
-        second_value = second_values.last - 0.1
-      else
-        second_value = second_values.last.lcm second_values.first
-      end
+    positions.pluck(:position)
+  end
+
+  def build_raw_positions_with_values(positions)
+    positions.map do |position|
+      { position: position,
+        latitude_value: (requester_latitude.abs - position.latitude.abs).abs.round,
+        longitude_value: (requester_longitude.abs - position.longitude.abs).abs.round }
+    end
+  end
+
+  def sort_raw_positions(positions)
+    positions.sort do |a, b|
+      first_values, first_value = define_position_values_by_least_common_multiple(a)
+      second_values, second_value = define_position_values_by_least_common_multiple(b)
 
       if first_value == second_value
         first_values <=> second_values
@@ -53,8 +54,16 @@ class LocationService
         first_value <=> second_value
       end
     end
+  end
 
-    positions.map{ |position| position[:position] }
+  def define_position_values_by_least_common_multiple(position)
+    values = [position[:longitude_value].round, position[:latitude_value].round].sort
+    value = if [0, 1].include? values.first
+              values.last - 0.1
+            else
+              values.last.lcm values.first
+            end
+    [values, value]
   end
 
   def search_positions_dinamyc_query(search_scope)

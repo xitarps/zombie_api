@@ -3,26 +3,26 @@
 # Survivors Controller
 class Api::V1::SurvivorsController < Api::V1::ApiController
   def create
-    @survivor = Survivor.new(survivor_params)
+    survivor = Survivor.new(survivor_params)
 
-    return render json: @survivor, status: :created if @survivor.save
+    return render json: survivor, status: :created if survivor.save
 
-    render json: @survivor.errors.as_json, status: :unprocessable_entity
+    render json: survivor.errors.as_json, status: :unprocessable_entity
   end
 
   def show
-    @survivor = Survivor.find(params[:id])
-    render json: @survivor.as_json, status: :ok
+    survivor = Survivor.find(params[:id])
+    render json: survivor.filtered_survivor, status: :ok
   rescue ActiveRecord::RecordNotFound
     render json: [I18n.t('activerecord.exceptions.not_found', id: params[:id])], status: :not_found
   end
 
   def update
-    @survivor = fetch_authenticated_survivor
+    survivor = fetch_authenticated_survivor
 
-    return render json: @survivor.as_json, status: :ok if @survivor.update(survivor_params)
+    return render json: survivor, status: :ok if survivor.update(survivor_params)
 
-    render json: @survivor.errors.as_json, status: :unprocessable_entity
+    render json: survivor.errors.as_json, status: :unprocessable_entity
   rescue StandardError
     render json: [I18n.t('activerecord.exceptions.unauthorized', id: params[:id])], status: :unauthorized
   end

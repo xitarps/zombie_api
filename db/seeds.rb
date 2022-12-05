@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-
 raise "\n => Database already with data, maybe db reset first?\n\n" unless Survivor.count.zero?
 
 puts "===== Generating Survivors =====\n"
@@ -23,12 +15,13 @@ survivors = [
 
 Survivor.create(survivors)
 
-puts "===== Generating Positions =====\n"
+puts "===== Checking Positions =====\n"
 
-Survivor.all.each do |survivor|
-  Position.create(survivor: survivor,
-                  latitude: rand(-90.0..90.0).round(6),
-                  longitude: rand(-180.0..180.0).round(6))
+if Position.where(latitude: 0.., longitude: 0..).empty?
+  Position.all.sample(2).each do |position|
+    position.update(latitude: rand(0.0..90.0).round(6),
+                    longitude: rand(0.0..180.0).round(6))
+  end
 end
 
 puts '===== Generating Infections ====='

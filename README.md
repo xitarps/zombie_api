@@ -174,5 +174,6 @@ https://github.com/users/xitarps/projects/2/views/1
   - Add show Survivors list
   - Add Reset token
   - Host Project
+  - Maybe use accepts_nested_attributes_for position inside Survivor
 
 </details>

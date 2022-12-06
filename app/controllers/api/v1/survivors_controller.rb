@@ -20,7 +20,10 @@ class Api::V1::SurvivorsController < Api::V1::ApiController
   def update
     survivor = fetch_authenticated_survivor
 
-    return render json: survivor, status: :ok if survivor.update(survivor_params)
+    if survivor.update(survivor_params) && survivor.position.update(survivor_position_params)
+      return render json: survivor,
+                    status: :ok
+    end
 
     render json: survivor.errors.as_json, status: :unprocessable_entity
   rescue StandardError
@@ -35,6 +38,10 @@ class Api::V1::SurvivorsController < Api::V1::ApiController
 
   def survivor_params
     params.require(:survivor).permit(:name, :gender)
+  end
+
+  def survivor_position_params
+    params.require(:survivor).permit(:latitude, :longitude)
   end
 
   def fetch_authenticated_survivor

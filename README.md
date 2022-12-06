@@ -79,10 +79,11 @@ Create new survivors
 POST http://127.0.0.1:3000/api/v1/survivors
 
 body: {
-	"survivor": {
-		"name": "new_survivor",
-		"gender": ""
-	}
+  "survivor":
+  {
+    "name": "new_survivor",
+    "gender": ""
+  }
 }
 ```
 
@@ -95,15 +96,15 @@ Update a survivor
 ```
 PUT http://127.0.0.1:3000/api/v1/survivors/:id
 
-body: { 
-	"survivor": { 
-		"id": "bee438b6-53ba-4f96-9e92-68f3b16fa4f7",
-	 	"token": "376167",
+body: {
+  "survivor": {
+    "id": "bee438b6-53ba-4f96-9e92-68f3b16fa4f7",
+    "token": "376167",
     "name": "new_survivor_name",
-	 	"gender": "female",
+    "gender": "female",
     "latitude": 50.7,
     "longitude": -30.55
-	}
+  }
 }
 ```
 
@@ -117,15 +118,15 @@ Mark survivor as infected
 POST http://127.0.0.1:3000/api/v1/infections/
 
 body: {
-	"infection": {
-		"informer": {
-			"id": "bee438b6-53ba-4f96-9e92-68f3b16fa4f7",
-			"token": "376167"
-		},
-		"survivor": {
-			"id": "7880ae37-c6f4-40eb-a1eb-c104dbba8c24"
-		}
-	}
+  "infection": {
+    "informer": {
+      "id": "bee438b6-53ba-4f96-9e92-68f3b16fa4f7",
+      "token": "376167"
+    },
+    "survivor": {
+      "id": "7880ae37-c6f4-40eb-a1eb-c104dbba8c24"
+    }
+  }
 }
 ```
 

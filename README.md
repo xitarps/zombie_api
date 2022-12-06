@@ -100,7 +100,9 @@ body: {
 		"id": "bee438b6-53ba-4f96-9e92-68f3b16fa4f7",
 	 	"token": "376167",
     "name": "new_survivor_name",
-	 	"gender": "female"
+	 	"gender": "female",
+    "latitude": 50.7,
+    "longitude": -30.55
 	}
 }
 ```

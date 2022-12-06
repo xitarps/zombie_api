@@ -78,7 +78,8 @@ Create new survivors
 ```
 POST http://127.0.0.1:3000/api/v1/survivors
 
-body: {
+BODY:
+{
   "survivor":
   {
     "name": "new_survivor",
@@ -96,7 +97,8 @@ Update a survivor
 ```
 PUT http://127.0.0.1:3000/api/v1/survivors/:id
 
-body: {
+BODY:
+{
   "survivor": {
     "id": "bee438b6-53ba-4f96-9e92-68f3b16fa4f7",
     "token": "376167",
@@ -117,7 +119,8 @@ Mark survivor as infected
 ```
 POST http://127.0.0.1:3000/api/v1/infections/
 
-body: {
+BODY:
+{
   "infection": {
     "informer": {
       "id": "bee438b6-53ba-4f96-9e92-68f3b16fa4f7",

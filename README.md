@@ -46,14 +46,9 @@ cd zombie_api
 ```
 Run Setup
 ```
-./bin/setup.sh
+bin/setup
 ```
- <hr>
 
-Optionaly You can either generate initial data
-```
-rails db:seed
-```
 </details>
 
 <details>
@@ -181,5 +176,6 @@ https://github.com/users/xitarps/projects/2/views/1
   - Add Reset token
   - Host Project
   - Maybe use accepts_nested_attributes_for position inside Survivor
+  - Review missing and/or incorrect translations
 
 </details>
